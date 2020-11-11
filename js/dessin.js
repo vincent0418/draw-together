@@ -4,70 +4,15 @@ const input_r = document.getElementById("input_r");
 const input_g = document.getElementById("input_g");
 const input_b = document.getElementById("input_b");
 const input_radius = document.getElementById("input_radius");
-const button_clear = document.getElementById("button_clear");
 const span_r = document.getElementById("span_r");
 const span_g = document.getElementById("span_g");
 const span_b = document.getElementById("span_b");
 const span_radius = document.getElementById("span_radius");
 const canvas_brush = document.getElementById("canvas_brush");
-const input_id_peer = document.getElementById("input_id_peer");
-const peer_id_span = document.getElementById("peer_id_span");
-const connecte = document.getElementById("connecte");
-const connexion = document.getElementById("connexion");
-const blueColor = document.getElementById("blueColor");
-const greenColor = document.getElementById("greenColor");
-const blackColor = document.getElementById("blackColor");
-const whiteColor = document.getElementById("whiteColor");
-const yellowColor = document.getElementById("yellowColor");
-const purpleColor = document.getElementById("purpleColor");
-const redColor = document.getElementById("redColor");
-const orangeColor = document.getElementById("orangeColor");
-const pinkColor = document.getElementById("pinkColor");
-const errorDiv = document.getElementById("error");
 
-//Initialisation des variables par défaut
-let peer = new Peer(null,{
-    host:  'localhost',
-    port: 9000,
-    path: '/draw-together'
-});
-let ctx = canvas_draw.getContext("2d");
-let idPeer = null;
-let conn = null;
 let isDown = false;
 let startX;
 let startY;
-
-//A l'ouverture génère un id de connexion.
-peer.on('open', function (id) {
-    idPeer = id;
-    peer_id_span.innerHTML = id
-});
-
-//Si un partenaire se connecte initialise la connexion automatiquement
-peer.on('connection', function (con) {
-    conn = con;
-    setConnect();
-});
-
-// S'il y a une erreur dans la connexion, fait apparaitre une popup avec l'erreur
-peer.on('error', function (err) {
-    errorDiv.classList.remove('hidden');
-    errorDiv.innerHTML = err;
-});
-
-//Si le client clique sur le bouton connexion il se connecte au client avec l'id selectionné
-function connect() {
-    conn = peer.connect(input_id_peer.value);
-    setConnect();
-}
-
-//Deconnecte le client et reinitialise l'interface
-function disconnect() {
-    peer.disconnect();
-    connecte.classList.add('hidden');
-    connexion.classList.remove('hidden');
-}
 
 function getMousePositionInCanvas(e,axe){
     if(axe === "X"){
@@ -187,63 +132,6 @@ function colorButton(r, g, b) {
     updateDom();
 }
 
-/*fitToContainer(canvas_draw)
-function fitToContainer(canvas){
-    canvas.style.width ='100%';
-    canvas.style.height='100%';
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-}*/
-
-//Initialisation des clicks des couleurs par défaut
-redColor.onclick = function () {
-    colorButton(255, 0, 0);
-}
-blueColor.onclick = function () {
-    colorButton(0, 0, 255);
-}
-greenColor.onclick = function () {
-    colorButton(0, 255, 0);
-}
-blackColor.onclick = function () {
-    colorButton(0, 0, 0);
-}
-whiteColor.onclick = function () {
-    colorButton(255, 255, 255);
-}
-yellowColor.onclick = function () {
-    colorButton(255, 255, 0);
-}
-purpleColor.onclick = function () {
-    colorButton(128, 0, 128);
-}
-pinkColor.onclick = function () {
-    colorButton(255, 192, 203);
-}
-orangeColor.onclick = function () {
-    colorButton(255, 165, 0);
-}
-
-//connecte le client et initialise l'interface de dessin
-function setConnect() {
-    connecte.classList.remove('hidden');
-    connexion.classList.add('hidden');
-
-    conn.on('open', function () {
-        conn.on('data', function (data) {
-            ctx = canvas_draw.getContext("2d");
-            if (data === "") {
-                ctx.clearRect(0, 0, canvas_draw.width, canvas_draw.height);
-            }
-            let img = new Image();
-            img.onload = function () {
-                ctx.drawImage(img, 0, 0);
-            };
-            img.src = data;
-        });
-    });
-}
-
 //Initialisation des events listener du DOM
 canvas_draw.onmousedown = function (e) {
     handleMouseDown(e);
@@ -261,7 +149,6 @@ input_r.oninput = updateDom;
 input_g.oninput = updateDom;
 input_b.oninput = updateDom;
 input_radius.oninput = updateDom;
-button_clear.onclick = clear
 
 //Initialisation du dom
 updateDom();

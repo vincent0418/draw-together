@@ -31,13 +31,10 @@
 
             <!-- the button for clearing canvas_draw -->
             <div>
-                <button class="btn btn-danger" id="button_clear">Effacer</button>
+                <button class="btn btn-danger" onclick="clear()">Effacer</button>
             </div>
         </div>
         <div class="col-md-3">
-            <div>
-                <button onclick="disconnect()" class="btn btn-warning" id="button-disconnect">Déconnexion</button>
-            </div>
             <div class="row">
                 <div class="col-md-8">
                     <!-- the range elements (R, G, B and radius) -->
@@ -83,35 +80,44 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-color" id="redColor" style="background-color: red"></button>
+                    <button class="btn btn-color" style="background-color: red"
+                            onclick="colorButton(255, 0, 0)"></button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-color" id="blueColor" style="background-color: blue"></button>
+                    <button class="btn btn-color" style="background-color: blue"
+                            onclick="colorButton(0, 0, 255)"></button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-color" id="greenColor" style="background-color: #00ff00"></button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <button class="btn btn-color" id="blackColor" style="background-color: black"></button>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-color" id="whiteColor" style="background-color: white"></button>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-color" id="yellowColor" style="background-color: yellow"></button>
+                    <button class="btn btn-color" style="background-color: #00ff00"
+                            onclick="colorButton(0, 255, 0)"></button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-color" id="purpleColor" style="background-color: purple"></button>
+                    <button class="btn btn-color" style="background-color: black"
+                            onclick="colorButton(0, 0, 0)"></button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-color" id="pinkColor" style="background-color: pink"></button>
+                    <button class="btn btn-color" style="background-color: white"
+                            onclick="colorButton(255, 255, 255)"></button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-color" id="orangeColor" style="background-color: orange"></button>
+                    <button class="btn btn-color" style="background-color: yellow"
+                            onclick="colorButton(255, 255, 0)"></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-color" style="background-color: purple"
+                            onclick="colorButton(128, 0, 128)"></button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-color" style="background-color: pink"
+                            onclick="colorButton(255, 192, 203)"></button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-color" style="background-color: orange"
+                            onclick="colorButton(255, 165, 0)"></button>
                 </div>
             </div>
         </div>

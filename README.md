@@ -30,4 +30,3 @@ une couleur prédéfinie.
 Il peut compléter votre dessin en direct.
 1. Pour effacer le dessin, appuyez sur le bouton `Effacer` en bas de l'écran. 
 ATTENTION : le dessin est effacé pour les deux utilisateurs
-1. Pour vous déconnecter, appuyez sur `Déconnexion`. Votre partenaire pourra continuer à dessiner.
