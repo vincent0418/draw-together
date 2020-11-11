@@ -1,0 +1,18 @@
+.hidden{
+    display: none;
+}
+
+.btn-color{
+    border: 1px black solid;
+    width: 4vw;
+    height: 4vh;
+    margin: 0.5vh;
+}
+
+#canvas_draw {
+    border: 1px solid black;
+}
+
+#connecte {
+    height: 80vh;
+}
